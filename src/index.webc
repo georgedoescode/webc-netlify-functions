@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebC + Netlify Functions ❤️</title>
+    <style webc:keep>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background: #000;
+        color: #fff;
+        font-family: system-ui;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        place-items: center;
+      }
+
+      body > * + * {
+        margin-top: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>WebC + Netlify Functions ❤️</h1>
+
+    <div id="target"></div>
+
+    <script webc:keep>
+      (async () => {
+        const title = "This is the blog post title";
+
+        const res = await fetch("/render-webc/", {
+          method: "POST",
+          body: `<test-component></test-component>`,
+        });
+
+        const compiled = await res.json();
+
+        document.querySelector("#target").innerHTML = `
+          <style>${compiled.css}</style>
+          ${compiled.html}
+        `;
+      })();
+    </script>
+  </body>
+</html>

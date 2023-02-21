@@ -1,0 +1,7 @@
+[[redirects]]
+from = "/render-webc/"
+to = "/.netlify/functions/render-webc/"
+status = 200
+
+[functions]
+included_files = ["./src/components/**.webc"]

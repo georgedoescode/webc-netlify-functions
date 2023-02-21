@@ -1,0 +1,7 @@
+<p>I was rendered by a Netlify Function!</p>
+
+<style webc:scoped>
+  :host p {
+    color: orange;
+  }
+</style>
